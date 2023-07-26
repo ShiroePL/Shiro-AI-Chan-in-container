@@ -1,5 +1,5 @@
 # 1. ShiroAi-chan , personal assistant powered by ChatGPT API
-![Screenshot](pictures/gui.png)
+![Screenshot](avatar.png)
 
 
 ### My attempt to create my anime assistant that can write, speak and assist me in everyday tasks, all in cute voice.
