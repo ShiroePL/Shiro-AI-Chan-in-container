@@ -1,4 +1,4 @@
-# 1. ShiroAi-chan , personal assistant powered by ChatGPT API
+# 1. ShiroAi-chan , personal assistant powered by ChatGPT API, Wear OS mode.
 ![Screenshot](avatar.png)
 
 
@@ -48,9 +48,7 @@ My personal Ai assistant ShiroAi-chan. I wanted to create AI girl from a long ti
 ### 6. Other functions:
 * She has radio button for random questions. If checked, she will use random timer and will be asking you questions to initialize conversation.
 
-### 7. Vtube Stuido (her look)
-* for now she can connect to Vtube Studio, and play animation. (but it is WIP, for now I tested with button that it works,a nd animation is played)
-  
+ 
 ### Instructions for me:
 
 #### To do but small steps:
