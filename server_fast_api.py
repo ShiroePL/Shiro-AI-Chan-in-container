@@ -13,6 +13,7 @@ from langchain_database.test_wszystkiego import add_event_from_shiro, retrieve_p
 import requests
 from typing import Optional
 import connect_to_phpmyadmin
+from home_assistant import ha_api_requests
 
 content_type_mode =""
 app = FastAPI()
@@ -276,7 +277,28 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
         logger.info("-----addded tokens to db--------")
         return personalized_answer
           
+    elif cleaned_question.lower().startswith("ha:") or "home_assistant" in agent_reply:
+        query = cleaned_question.replace("ha:", "").strip()
+        # use function chain to add event to calendar
+        answer_from_ha = ha_api_requests.room_temp()
+        print("answer from api: " + answer_from_ha)
 
+        query2 = "Madrus: " + query + ". shiro: Retriving informations from her sensors... Done! Info from sensors:" + answer_from_ha + "°C. | (please say °C in your answer) | Shiro:"
+        messages.append({"role": "user", "content": query2})
+                
+        print("messages: " + str(messages))
+        logger.info("messages: " + str(messages))
+        personalized_answer, prompt_tokens, completion_tokens, total_tokens = chatgpt_api.send_to_openai(messages)
+
+        print("answer: " + personalized_answer)
+        logger.info("answer: " + personalized_answer)
+        request_voice.request_voice_fn(personalized_answer)
+        connect_to_phpmyadmin.insert_message_to_database(name, question, personalized_answer, messages) #insert to Azure DB to user table    
+        connect_to_phpmyadmin.add_pair_to_general_table(name, personalized_answer) #to general table with all  questions and answers
+        connect_to_phpmyadmin.send_chatgpt_usage_to_database(prompt_tokens, completion_tokens, total_tokens) #to A DB with usage stats
+        print("-----addded tokens to db--------")
+        logger.info("-----addded tokens to db--------")
+        return personalized_answer      
 
     elif cleaned_question.lower().startswith("db:") or "database_search" in agent_reply:
         query = cleaned_question.replace("db:", "").strip()
