@@ -2,7 +2,7 @@
 import os
 import azure.cognitiveservices.speech as speechsdk
 
-def request_voice_fn(text, lang):
+def request_voice_fn(text, lang=False):
     """text: text to be converted to speech, lang: english(default) or polish"""
         #speech config
     speech_config = speechsdk.SpeechConfig(subscription=os.environ.get('SPEECH_KEY'), region=os.environ.get('SPEECH_REGION'))
@@ -16,8 +16,11 @@ def request_voice_fn(text, lang):
     <voice name="pl-PL-ZofiaNeural"><prosody rate="+9.00%" volume="-60.00%" pitch="+7.00%">""" + text + """</prosody></voice></speak>"""
 
 
-    result = synthesizer.speak_ssml_async(ssml).get() if lang else synthesizer.speak_ssml_async(ssml_pl).get()
-
+    #result = synthesizer.speak_ssml_async(ssml).get() if lang else synthesizer.speak_ssml_async(ssml_pl).get()
+    if lang ==True:
+        result = synthesizer.speak_ssml_async(ssml_pl).get()
+    else:  
+        result = synthesizer.speak_ssml_async(ssml).get()
     stream = speechsdk.AudioDataStream(result)
     stream.save_to_wav_file("./kiki_hub/response.wav")
     
