@@ -286,8 +286,8 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
         print("answer from api: " + answer_from_ha)
 
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S %A")
-        question = f"[current time: {current_time}] Madrus: {query}. shiro: Retriving informations from her sensors... Done! Info from sensors:{answer_from_ha}°C. Weather outside: 25°C.| (please say °C in your answer) | Shiro:"        
-        messages.append({"role": "user", "content": question})
+        query2 = f"[current time: {current_time}] Madrus: {query}. shiro: Retriving informations from her sensors... Done! Info from sensors:{answer_from_ha}°C. Weather outside: 25°C.| (please say °C in your answer) | Shiro:"        
+        messages.append({"role": "user", "content": query2})
                 
         print("messages: " + str(messages))
         logger.info("messages: " + str(messages))
