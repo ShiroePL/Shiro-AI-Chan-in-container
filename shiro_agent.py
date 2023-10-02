@@ -27,13 +27,13 @@ class CustomToolsAgent:
             Tool(
                 name="show_manga_list",
                 func=fake_function_manga,
-                description="useful for when you need to answer questions related to manga list",
+                description="useful for when you need to answer questions related to manga",
                 return_direct=True,
             ),
             Tool(
                 name="show_anime_list",
                 func=fake_function_anime,
-                description="useful for when you need to answer questions related to anime list",
+                description="useful for when you need to answer questions related to anime",
                 return_direct=True,
             ),
             Tool(
@@ -55,9 +55,9 @@ class CustomToolsAgent:
                 return_direct=True,
             ),
             Tool(
-                name="set_timer",
+                name="home_assistant",
                 func=fake_function_anime,
-                description="useful for when you need to answer questions related to setting timer",
+                description="useful for when you need to answer questions related to home assistant and home automation",
                 return_direct=True,
             ),
         ]
