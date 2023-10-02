@@ -14,6 +14,8 @@ import requests
 from typing import Optional
 import connect_to_phpmyadmin
 from home_assistant import ha_api_requests
+from datetime import datetime
+
 
 content_type_mode =""
 app = FastAPI()
@@ -283,7 +285,8 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
         answer_from_ha = ha_api_requests.room_temp()
         print("answer from api: " + answer_from_ha)
 
-        query2 = "Madrus: " + query + ". shiro: Retriving informations from her sensors... Done! Info from sensors:" + answer_from_ha + "°C. | (please say °C in your answer) | Shiro:"
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S %A")
+        query2 = f"[current time: {current_time}] Madrus: {query}. shiro: Retriving informations from her sensors... Done! Info from sensors:{answer_from_ha}°C. Weather outside: 25°C.| (please say °C in your answer) | Shiro:"        
         messages.append({"role": "user", "content": query2})
                 
         print("messages: " + str(messages))
