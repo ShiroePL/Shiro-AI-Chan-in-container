@@ -283,7 +283,7 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
         query = f"[current time: {current_time}] {query}"
         # use function chain to add event to calendar
         answer_from_ha = ha_api_requests.room_temp()
-        outside_temperature = open_weather_api.get_outside_temperature()
+        outside_temperature = open_weather_api.current_temperature()
         print("answer from api: " + answer_from_ha)
 
         
