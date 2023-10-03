@@ -8,8 +8,8 @@ import kiki_hub.request_voice_tts as request_voice
 import string
 import shared_code.anilist.anilist_api_requests as anilist_api_requests
 import re
-from shiro_agent import CustomToolsAgent
-from langchain_database.test_wszystkiego import add_event_from_shiro, retrieve_plans_for_days
+from shared_code.shiro_agent import CustomToolsAgent
+from calendar_functions.test_wszystkiego import add_event_from_shiro, retrieve_plans_for_days
 import requests
 from typing import Optional
 import connect_to_phpmyadmin
@@ -251,8 +251,6 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
 
         # use function chain to add event to calendar
         answer, prompt_tokens, completion_tokens, total_tokens = retrieve_plans_for_days(query)
-
-        
 
             # sending schedule to shiro to add personality to raw schedule
         question = f"""can you summarize my plans ? what i have for that days. tell me like assistant tells plans for her boss when he has little time to listen. In 'your words', not just plain date's. and please order it by dates. here are my plans: '{answer}"""
