@@ -9,11 +9,11 @@ import string
 import shared_code.anilist.anilist_api_requests as anilist_api_requests
 import re
 from shared_code.shiro_agent import CustomToolsAgent
-from calendar_functions.test_wszystkiego import add_event_from_shiro, retrieve_plans_for_days
+from shared_code.calendar_functions.test_wszystkiego import add_event_from_shiro, retrieve_plans_for_days
 import requests
 from typing import Optional
 import connect_to_phpmyadmin
-from shared_code.home_assistant import ha_api_requests
+from shared_code.home_assistant import ha_api_requests, open_weather_api
 from datetime import datetime
 
 
@@ -283,10 +283,11 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
         query = f"[current time: {current_time}] {query}"
         # use function chain to add event to calendar
         answer_from_ha = ha_api_requests.room_temp()
+        outside_temperature = open_weather_api.get_outside_temperature()
         print("answer from api: " + answer_from_ha)
 
         
-        query2 = f"[current time: {current_time}] Madrus: {query}. shiro: Retriving informations from her sensors... Done! Info from sensors:{answer_from_ha}°C. Weather outside: 25°C.| (please say °C in your answer) | Shiro:"
+        query2 = f"[current time: {current_time}] Madrus: {query}. shiro: Retriving informations from her sensors... Done! Info from sensors:{answer_from_ha}°C. Weather outside: {outside_temperature}°C.| (please say °C in your answer) | Shiro:"
         messages.append({"role": "user", "content": query2})
                 
         print("messages: " + str(messages))
