@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from fastapi.responses import FileResponse
 import logging
 from better_profanity import profanity
-import chatgpt_api
+import shared_code.chatgpt_api
 import kiki_hub.request_voice_tts as request_voice
 import string
 import shared_code.anilist.anilist_api_requests as anilist_api_requests
@@ -259,7 +259,7 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
                 
         print("messages: " + str(messages))
         logger.info("messages: " + str(messages))
-        personalized_answer, prompt_tokens2, completion_tokens2, total_tokens2 = chatgpt_api.send_to_openai(messages)
+        personalized_answer, prompt_tokens2, completion_tokens2, total_tokens2 = shared_code.chatgpt_api.send_to_openai(messages)
 
         prompt_tokens += prompt_tokens2
         completion_tokens += completion_tokens2
@@ -292,7 +292,7 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
                 
         print("messages: " + str(messages))
         logger.info("messages: " + str(messages))
-        personalized_answer, prompt_tokens, completion_tokens, total_tokens = chatgpt_api.send_to_openai(messages)
+        personalized_answer, prompt_tokens, completion_tokens, total_tokens = shared_code.chatgpt_api.send_to_openai(messages)
 
         print("answer: " + personalized_answer)
         logger.info("answer: " + personalized_answer)
@@ -369,7 +369,7 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
         
         # send to open ai for answer
         
-        answer, prompt_tokens, completion_tokens, total_tokens = chatgpt_api.send_to_openai(messages) 
+        answer, prompt_tokens, completion_tokens, total_tokens = shared_code.chatgpt_api.send_to_openai(messages) 
         print("answer from OpenAI: " + answer)
         logger.info("answer from OpenAI: " + answer)
             # START find ID and episodes number of updated anime
@@ -426,7 +426,7 @@ def main_function(question, checkbox_agentmode, name, checkbox_update, checkbox_
             # send to open ai for answer
         logger.info("messages: " + str(messages))
         print("messages: " + str(messages))
-        answer, prompt_tokens, completion_tokens, total_tokens = chatgpt_api.send_to_openai(messages) 
+        answer, prompt_tokens, completion_tokens, total_tokens = shared_code.chatgpt_api.send_to_openai(messages) 
         logger.info("answer from OpenAI: " + answer)
         print("ShiroAi-chan: " + answer)
          
