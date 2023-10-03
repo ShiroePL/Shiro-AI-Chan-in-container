@@ -6,7 +6,7 @@ from better_profanity import profanity
 import chatgpt_api
 import kiki_hub.request_voice_tts as request_voice
 import string
-import anilist.anilist_api_requests as anilist_api_requests
+import shared_code.anilist.anilist_api_requests as anilist_api_requests
 import re
 from shiro_agent import CustomToolsAgent
 from langchain_database.test_wszystkiego import add_event_from_shiro, retrieve_plans_for_days
