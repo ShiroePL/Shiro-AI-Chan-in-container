@@ -12,7 +12,7 @@ from shared_code.shiro_agent import CustomToolsAgent
 from shared_code.calendar_functions.test_wszystkiego import add_event_from_shiro, retrieve_plans_for_days
 import requests
 from typing import Optional
-import connect_to_phpmyadmin
+import shared_code.connect_to_phpmyadmin as connect_to_phpmyadmin
 from shared_code.home_assistant import ha_api_requests, open_weather_api
 from datetime import datetime
 
