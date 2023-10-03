@@ -13,7 +13,7 @@ from langchain_database.test_wszystkiego import add_event_from_shiro, retrieve_p
 import requests
 from typing import Optional
 import connect_to_phpmyadmin
-from home_assistant import ha_api_requests
+from shared_code.home_assistant import ha_api_requests
 from datetime import datetime
 
 
