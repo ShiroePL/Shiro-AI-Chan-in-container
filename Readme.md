@@ -1,6 +1,7 @@
 # 1. ShiroAi-chan , personal assistant powered by ChatGPT API, Wear OS mode.
 ![Screenshot](avatar.png)
 
+## README is not up to date. Other versions have more updated informations. I will change it in near future.
 
 ### My attempt to create my anime assistant that can write, speak and assist me in everyday tasks, all in cute voice.
 
