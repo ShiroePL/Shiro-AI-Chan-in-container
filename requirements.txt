@@ -19,7 +19,7 @@ greenlet==2.0.2
 h11==0.14.0
 icalendar==5.0.7
 idna==3.4
-langchain==0.0.233
+langchain==0.0.329
 langsmith==0.0.5
 lxml==4.9.3
 marshmallow==3.19.0
